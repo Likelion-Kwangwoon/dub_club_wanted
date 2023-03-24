@@ -1,0 +1,34 @@
+{
+  "club" :[
+    {
+      "image": "a",
+      "title": "welcome1",
+      "name" : "likelion",
+      "category" : "union"
+    },
+    {
+      "image": "a",
+      "title": "welcome2",
+      "name" : "likelion",
+      "category" : "union"
+    },
+    {
+      "image": "a",
+      "title": "welcome3",
+      "name" : "likelion",
+      "category" : "union"
+    },
+    {
+      "image": "a",
+      "title": "welcome4",
+      "name" : "likelion",
+      "category" : "union"
+    },
+    {
+      "image": "a",
+      "title": "welcome5",
+      "name" : "likelion",
+      "category" : "union"
+    }
+  ]
+}

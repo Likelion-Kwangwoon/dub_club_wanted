@@ -1,9 +1,12 @@
 import React from 'react';
-
+import ClubList from './clubList';
+import './mainPage.scss';
+import ClubFilter from './clubFilter';
 function MainPage() {
   return(
-    <div>
-      <h1> 메인 페이지 </h1>
+    <div className='main-page'>
+      <ClubFilter />
+      <ClubList />
     </div>
   )
 }
