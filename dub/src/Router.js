@@ -3,6 +3,7 @@ import React, { Fragment } from 'react';
 import MainPage from './components/main/mainPage';
 import TopBar from './components/navigation/topBar';
 import LoginPage from './components/navigation/loginPage/loginPage';
+import RegisterPage from './components/navigation/RegisterPage';
 function Router() {
   return(
     <BrowserRouter>
