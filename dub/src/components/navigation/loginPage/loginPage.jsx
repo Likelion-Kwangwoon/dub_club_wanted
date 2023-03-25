@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './loginPage.scss';
 
+
+
+
 function LoginPage(props) {
 
   const [email, setEmail] = useState('');
@@ -10,6 +13,8 @@ function LoginPage(props) {
     e.preventDefault();
     console.log(email);
   }
+
+  
 
   return (
     <div className="auth-form-container">
