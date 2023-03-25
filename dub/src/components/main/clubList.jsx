@@ -7,13 +7,13 @@ function ClubList() {
     <div className='Club-container'>
       <ul className='Club-list'>
         {
-          data.club.map((club) => {
+          data.club.map((club, index) => {
             return (
-              <li className='Club-card-container'>
+              <li className='Club-card-container' key={index}>
                 <div className='Club-card'>
                   <h2>{club.image}</h2>
                   <h2>{club.title}</h2>
-                  <h2>{club.name}</h2>
+                  <h2>{club.author}</h2>
                   <h2>{club.category}</h2>
                 </div>
               </li>

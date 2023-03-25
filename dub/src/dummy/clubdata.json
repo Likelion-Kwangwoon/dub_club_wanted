@@ -3,32 +3,39 @@
     {
       "image": "a",
       "title": "welcome1",
-      "name" : "likelion",
+      "author" : "likelion",
       "category" : "union"
     },
     {
       "image": "a",
       "title": "welcome2",
-      "name" : "likelion",
+      "author" : "likelion",
       "category" : "union"
     },
     {
       "image": "a",
       "title": "welcome3",
-      "name" : "likelion",
+      "author" : "likelion",
       "category" : "union"
     },
     {
       "image": "a",
       "title": "welcome4",
-      "name" : "likelion",
+      "author" : "likelion",
       "category" : "union"
     },
     {
       "image": "a",
       "title": "welcome5",
-      "name" : "likelion",
+      "author" : "likelion",
       "category" : "union"
+    },
+    {
+      "image":"",
+      "title":"",
+      "author":"",
+      "content":"",
+      "category":""
     }
   ]
 }
