@@ -1,8 +1,10 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import clubdata from "../../dummy/clubdata.json";
 import './clubList.scss'
 function ClubList() {
   const data = clubdata;
+  const [clubs, setClubs] = useState([]);
   return(
     <div className='Club-container'>
       <ul className='Club-list'>
