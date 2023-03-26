@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './loginPage.scss';
-
-
+import axios from "axios";
 
 
 function LoginPage(props) {
@@ -9,12 +8,31 @@ function LoginPage(props) {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
 
+  const [isLogin, setIsLogin] = useState(false);
+  const [user, setUser] = useState({});
+
+  const accessToken = () => {
+    axios ({
+      url: "http://localhost:8123/accesstoken",
+      method: "GET",
+      withCredentials: true,
+    });
+  };
+
+  const refreshToken = () => {
+    axios ({
+      url : "http://localhost:8123/refreshtoken",
+      method: "GET",
+      withCredentials: true,
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(email);
   }
 
-  
+
 
   return (
     <div className="auth-form-container">
