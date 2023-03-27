@@ -1,112 +1,101 @@
-import React, { useState, useEffect } from 'react';
-import './loginPage.scss';
-import axios from "axios";
+import { useRef, useState, useEffect } from 'react';
+import useAuth from '../../../hooks/useAuth';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import axios from '../../../api/axios';
 
+const LOGIN_URL = '/auth';
 
-function LoginPage(props) {
+const Login = () => {
+    const { setAuth } = useAuth();
 
-  const [email, setEmail] = useState('');
-  const [pass, setPass] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
-  const [isLogin, setIsLogin] = useState(false);
-  const [user, setUser] = useState({});
+    const userRef = useRef();
+    const errRef = useRef();
 
-  const accessToken = () => {
-    axios ({
-      url: "http://localhost:8123/accesstoken",
-      method: "GET",
-      withCredentials: true,
-    });
-  };
+    const [user, setUser] = useState('');
+    const [pwd, setPwd] = useState('');
+    const [errMsg, setErrMsg] = useState('');
 
-  const refreshToken = () => {
-    axios ({
-      url : "http://localhost:8123/refreshtoken",
-      method: "GET",
-      withCredentials: true,
-    });
-  };
+    useEffect(() => {
+        userRef.current.focus();
+    }, [])
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(email);
-  }
+    useEffect(() => {
+        setErrMsg('');
+    }, [user, pwd])
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-
-  return (
-    <div className="auth-form-container">
-      <form className="login-form" onSubmit = {handleSubmit}>
-        <label for="email">email</label>
-        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="youremail@kw.ac.kr" id="email" name="email" />
-        <label for="password">password</label>
-        <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
-        <button type="submit">Log In</button>
-      </form>
-    <button className="link-btn" onClick={() => props.onFormSwitch('register')}>계정이 없으십니까? 회원가입하기</button>
-  </div>
-  )
-}
-
-export default LoginPage;
-
-/*
-export default function LoginPage({setIsLogin, setUser}) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const Login = () => {
-    axios({
-      url: "http://localhost:8123/login",
-      method: "POST",
-      withCredentials: true,
-      data : {
-        email : email,
-        password : password,
-      },
-    }).then((result) => {
-      if(result.status === 200) {
-        windiw.open("/","_self");
-
-      }
-    });
-  };
-
-  useEffect(() => {
-    try {
-      axios ({
-        url : "http://localhost:8123/login/success",
-        method : "GET",
-        withCredentials : true,
-      })
-      .then ((result) => {
-        if(result.data[0]){
-          setIsLogin(true);
-          setUser(result.data[0]);
+        try {
+            const response = await axios.post(LOGIN_URL,
+                JSON.stringify({ user, pwd }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            );
+            console.log(JSON.stringify(response?.data));
+            //console.log(JSON.stringify(response));
+            const accessToken = response?.data?.accessToken;
+            const roles = response?.data?.roles;
+            setAuth({ user, pwd, roles, accessToken });
+            setUser('');
+            setPwd('');
+            navigate(from, { replace: true });
+        } catch (err) {
+            if (!err?.response) {
+                setErrMsg('No Server Response');
+            } else if (err.response?.status === 400) {
+                setErrMsg('Missing Username or Password');
+            } else if (err.response?.status === 401) {
+                setErrMsg('Unauthorized');
+            } else {
+                setErrMsg('Login Failed');
+            }
+            errRef.current.focus();
         }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    } catch(error) {
-      console.log(error);
     }
-  }, []);
 
-  return (
-    <div className="auth-form-container">
-      <form className="login-form" onSubmit = {handleSubmit}>
-        <label for="email">email</label>
-        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="youremail@kw.ac.kr" id="email" name="email" />
-        <label for="password">password</label>
-        <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
-        <button type="submit">Log In</button>
-      </form>
-    <button className="link-btn" onClick={() => props.onFormSwitch('register')}>계정이 없으십니까? 회원가입하기</button>
-  </div>
-  )
+    return (
 
+        <section>
+            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+            <h1>Sign In</h1>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="username">Username:</label>
+                <input
+                    type="text"
+                    id="username"
+                    ref={userRef}
+                    autoComplete="off"
+                    onChange={(e) => setUser(e.target.value)}
+                    value={user}
+                    required
+                />
 
+                <label htmlFor="password">Password:</label>
+                <input
+                    type="password"
+                    id="password"
+                    onChange={(e) => setPwd(e.target.value)}
+                    value={pwd}
+                    required
+                />
+                <button>Sign In</button>
+            </form>
+            <p>
+                Need an Account?<br />
+                <span className="line">
+                    <Link to="/register">Sign Up</Link>
+                </span>
+            </p>
+        </section>
+
+    )
 }
 
-*/
+export default Login
