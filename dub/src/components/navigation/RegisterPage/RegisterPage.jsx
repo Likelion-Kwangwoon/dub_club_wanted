@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from '../../../api/axios';
 import { Link } from "react-router-dom";
 
-
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+// 3 글자부터 가능 
+// const USER_REGEX = /^[A-z][A-z0-9-_]{2,23}$/;
+const USER_REGEX = /[^?a-zA-Z0-9/]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = '/register';
 
@@ -116,7 +117,7 @@ const Register = () => {
                         />
                         <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
-                            4 to 24 characters.<br />
+                            3 to 24 characters.<br />
                             Must begin with a letter.<br />
                             Letters, numbers, underscores, hyphens allowed.
                         </p>
