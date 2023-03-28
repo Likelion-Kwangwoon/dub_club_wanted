@@ -10,11 +10,15 @@ function TopBar() {
   const gotoLogin = () => {
     navigate("/loginpage");
   }
+  const gotoInput = () => {
+    navigate("/detailinput");
+  }
 
   return(
     <header>
       <span onClick={gotoMain}><h1>dub</h1></span>
       <nav>
+        <span onClick={gotoInput}>글작성</span>
         <span>지원하기</span>
         <span onClick={gotoLogin}>로그인</span>
       </nav>

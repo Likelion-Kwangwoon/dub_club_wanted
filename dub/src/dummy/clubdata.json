@@ -1,0 +1,41 @@
+{
+  "club" :[
+    {
+      "image": "a",
+      "title": "welcome1",
+      "clubName" : "likelion",
+      "category" : "union"
+    },
+    {
+      "image": "a",
+      "title": "welcome2",
+      "clubName" : "likelion",
+      "category" : "union"
+    },
+    {
+      "image": "a",
+      "title": "welcome3",
+      "clubName" : "likelion",
+      "category" : "union"
+    },
+    {
+      "image": "a",
+      "title": "welcome4",
+      "clubName" : "likelion",
+      "category" : "union"
+    },
+    {
+      "image": "a",
+      "title": "welcome5",
+      "clubName" : "likelion",
+      "category" : "union"
+    },
+    {
+      "image":"",
+      "title":"",
+      "clubName":"",
+      "content":"",
+      "category":""
+    }
+  ]
+}
