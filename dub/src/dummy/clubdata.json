@@ -3,37 +3,37 @@
     {
       "image": "a",
       "title": "welcome1",
-      "author" : "likelion",
+      "clubName" : "likelion",
       "category" : "union"
     },
     {
       "image": "a",
       "title": "welcome2",
-      "author" : "likelion",
+      "clubName" : "likelion",
       "category" : "union"
     },
     {
       "image": "a",
       "title": "welcome3",
-      "author" : "likelion",
+      "clubName" : "likelion",
       "category" : "union"
     },
     {
       "image": "a",
       "title": "welcome4",
-      "author" : "likelion",
+      "clubName" : "likelion",
       "category" : "union"
     },
     {
       "image": "a",
       "title": "welcome5",
-      "author" : "likelion",
+      "clubName" : "likelion",
       "category" : "union"
     },
     {
       "image":"",
       "title":"",
-      "author":"",
+      "clubName":"",
       "content":"",
       "category":""
     }

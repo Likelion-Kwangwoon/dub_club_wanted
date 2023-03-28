@@ -1,13 +1,27 @@
 import React from 'react';
 import { useState } from 'react';
+import axios from 'axios';
 function DetailInput() {
   const [state, setState] = useState({
     image:"",
     title:"",
-    author:"",
+    clubName:"",
     content:"",
     category:""
   });
+
+  const [imageSrc, setImageSrc] = useState('');
+
+  const encodeFileToBase64 = (fileBlob) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(fileBlob);
+    return new Promise((resolve) => {
+      reader.onload = () => {
+        setImageSrc(reader.result);
+        resolve();
+      };
+    });
+  };
 
   const handleChangeState = (e) => {
     console.log(e.target.name);
@@ -20,15 +34,22 @@ function DetailInput() {
   };
 
   const handleSubmit = (e) => {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value,
+      image:imageSrc,
+    })
+
     console.log(state);
     alert("저장 성공");
   }
 
   return(
-    <div className='editor'>
+    <form className='editor'
+          onSubmit={(e) => handleSubmit(e)}>
       <h2>동아리 모집 공고 작성</h2>
       <div>
-        <input name="author" value={state.author}
+        <input name="clubName" value={state.clubName}
         onChange={handleChangeState}
         />
       </div>
@@ -43,9 +64,16 @@ function DetailInput() {
         />
       </div>
       <div>
-      <input name="image" value={state.image}
-        onChange={handleChangeState}
+      <input type="file"
+            name="image" 
+            accept="image/jpg, image/png, image/jpeg"
+            onChange={(e) => {
+              encodeFileToBase64(e.target.files[0]);
+            }}
         />
+      <div className='preview'>
+        {imageSrc && <img src={imageSrc} alt='preview-img'/>}
+      </div>
       </div>
       <div>
       <textarea name="content" value={state.content}
@@ -53,11 +81,11 @@ function DetailInput() {
         />
       </div>
       <div>
-        <button onClick={handleSubmit}>
+        <button type='submit'>
           게시하기
         </button>
       </div>
-    </div>
+    </form>
   );
 }
 

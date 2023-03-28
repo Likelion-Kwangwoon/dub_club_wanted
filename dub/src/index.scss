@@ -1,8 +1,15 @@
 $font-stack:    Helvetica, sans-serif;
 $primary-color: #333;
+$line-color: #2B3A55;
+$point-color1: #CE7777;
+$point-color2: #E8C4C4;
+$point-color3: #F2E5E5;
+$bg-color: #F4F4F4;
 
 body {
   font: 100% $font-stack;
-  color: $primary-color;
+  text-decoration-color: $primary-color;
   text-align: center;
+  background-color: $bg-color;
+  border-color: $line-color;
 }
