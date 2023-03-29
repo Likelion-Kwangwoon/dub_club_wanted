@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 function DetailInput() {
   const [state, setState] = useState({
     image:"",
@@ -9,6 +9,8 @@ function DetailInput() {
     content:"",
     category:""
   });
+
+  
 
   const [imageSrc, setImageSrc] = useState('');
 
@@ -45,27 +47,39 @@ function DetailInput() {
   }
 
   return(
+
     <form className='editor'
           onSubmit={(e) => handleSubmit(e)}>
       <h2>동아리 모집 공고 작성</h2>
-      <div>
-        <input name="clubName" value={state.clubName}
+      <div  
+        style={{
+          margin: '24px 0',
+        }}>
+        <input name="clubName" placeholder='clubname' value={state.clubName}
         onChange={handleChangeState}
         />
       </div>
-      <div>
-      <input name="category" value={state.category}
+      <div style={{
+          margin: '24px 0',
+        }}>
+      <input name="category" placeholder='category' value={state.category}
         onChange={handleChangeState}
         />
       </div>
-      <div>
-      <input name="title" value={state.title}
+      <div style={{
+          margin: '24px 0',
+        }}>
+      <input name="title" placeholder='title' value={state.title} 
         onChange={handleChangeState}
         />
       </div>
-      <div>
+      <div style={{
+          margin: '24px 0',
+        }}>
+          
       <input type="file"
             name="image" 
+            placeholder='image/jpg/png/jpeg'
             accept="image/jpg, image/png, image/jpeg"
             onChange={(e) => {
               encodeFileToBase64(e.target.files[0]);
@@ -75,8 +89,13 @@ function DetailInput() {
         {imageSrc && <img src={imageSrc} alt='preview-img'/>}
       </div>
       </div>
-      <div>
-      <textarea name="content" value={state.content}
+      <div style={{
+          margin: '24px 0',
+        }}>
+      <textarea name="content" placeholder='textarea' autoSize={{
+          minRows: 3,
+          maxRows: 7,
+        }} value={state.content} 
         onChange={handleChangeState}
         />
       </div>
