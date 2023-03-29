@@ -3,7 +3,8 @@ import React, { Fragment } from 'react';
 import MainPage from './components/main/mainPage';
 import TopBar from './components/navigation/topBar';
 import LoginPage from './components/navigation/loginPage/loginPage';
-import RegisterPage from './components/navigation/RegisterPage';
+import RegisterPage from './components/navigation/RegisterPage/RegisterPage';
+
 function Router() {
   return(
     <BrowserRouter>
@@ -14,6 +15,7 @@ function Router() {
         <Routes>
           <Route path='/' element={<MainPage />} />
           <Route path='/loginpage' element={<LoginPage />} />
+          <Route path='/Register' element={<RegisterPage />} />
         </Routes>
       </Fragment>
     </BrowserRouter>

@@ -12,10 +12,13 @@ import RequireAuth from './components/RequireAuth';
 import { Routes, Route } from 'react-router-dom';
 
 const ROLES = {
-  'User': 2001,
+  'User': 8080,
   'Editor': 1984,
   'Admin': 5150
 }
+
+
+
 
 function App() {
 
@@ -29,6 +32,7 @@ function App() {
         <Route path="unauthorized" element={<Unauthorized />} />
 
         {/* we want to protect these routes */}
+        {/*권한처리는 어차피 불필요 */}
         <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
           <Route path="/" element={<Home />} />
         </Route>
