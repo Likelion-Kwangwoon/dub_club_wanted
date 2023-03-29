@@ -39,8 +39,8 @@ function DetailInput() {
       [e.target.name]: e.target.value,
       image:imageSrc,
     })
-
     console.log(state);
+    
     alert("저장 성공");
   }
 
