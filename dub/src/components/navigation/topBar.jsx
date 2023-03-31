@@ -13,6 +13,9 @@ function TopBar() {
   const gotoInput = () => {
     navigate("/detailinput");
   }
+  const gotoRegister = () => {
+    navigate("/registerpage");
+  }
 
   return(
     <header>
@@ -21,6 +24,7 @@ function TopBar() {
         <span onClick={gotoInput}>글작성</span>
         <span>지원하기</span>
         <span onClick={gotoLogin}>로그인</span>
+        <span onClick={gotoRegister}>회원가입</span>
       </nav>
     </header>
   );
