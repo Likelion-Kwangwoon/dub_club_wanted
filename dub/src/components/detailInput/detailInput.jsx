@@ -1,6 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
-import axios from 'axios';
+import '../sass/Button.scss';
+import '../sass/detailInput.scss';
+//import Button from '@mui/material/Button';
+// import axios from 'axios';
 function DetailInput() {
   const [state, setState] = useState({
     image:"",
@@ -9,6 +12,8 @@ function DetailInput() {
     content:"",
     category:""
   });
+
+  
 
   const [imageSrc, setImageSrc] = useState('');
 
@@ -45,27 +50,43 @@ function DetailInput() {
   }
 
   return(
+    <div className="detailInput">
+
     <form className='editor'
           onSubmit={(e) => handleSubmit(e)}>
       <h2>동아리 모집 공고 작성</h2>
-      <div>
-        <input name="clubName" value={state.clubName}
+      <div   
+        style={{
+          margin: '56px 0',
+        }}>
+          <p>동아리 이름은 무엇인가요?</p>
+        <input name="clubName" placeholder='clubname' value={state.clubName}
         onChange={handleChangeState}
         />
       </div>
-      <div>
-      <input name="category" value={state.category}
+      <div style={{
+          margin: '56px 0',
+        }}>
+          <p>동아리 분과를 입력해주세요 / 분과명 여기에 제시할 것</p>
+      <input name="category" placeholder='category' value={state.category}
         onChange={handleChangeState}
         />
       </div>
-      <div>
-      <input name="title" value={state.title}
+      <div style={{
+          margin: '56px 0',
+        }}>
+          <p>공고 제목을 작성해주세요</p>
+      <input name="title" placeholder='title' value={state.title} 
         onChange={handleChangeState}
         />
       </div>
-      <div>
+      <div style={{
+          margin: '56px 0',
+        }}>
+          
       <input type="file"
             name="image" 
+            placeholder='image/jpg/png/jpeg'
             accept="image/jpg, image/png, image/jpeg"
             onChange={(e) => {
               encodeFileToBase64(e.target.files[0]);
@@ -75,17 +96,21 @@ function DetailInput() {
         {imageSrc && <img src={imageSrc} alt='preview-img'/>}
       </div>
       </div>
-      <div>
-      <textarea name="content" value={state.content}
+      <div style={{
+          margin: '56px 0',
+        }}>
+      <textarea name="content" placeholder='textarea' autoSize={{
+          minRows: 3,
+          maxRows: 7,
+        }} value={state.content} 
         onChange={handleChangeState}
         />
       </div>
       <div>
-        <button type='submit'>
-          게시하기
-        </button>
+        <button className="Button" type='submit'>게시하기</button>
       </div>
     </form>
+    </div>
   );
 }
 
