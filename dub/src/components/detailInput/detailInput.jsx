@@ -67,7 +67,7 @@ function DetailInput() {
       <div style={{
           margin: '56px 0',
         }}>
-          <p>동아리 분과를 입력해주세요</p>
+          <p>동아리 분과를 입력해주세요 / 분과명 여기에 제시할 것</p>
       <input name="category" placeholder='category' value={state.category}
         onChange={handleChangeState}
         />
@@ -75,7 +75,7 @@ function DetailInput() {
       <div style={{
           margin: '56px 0',
         }}>
-          <p>공고 제목을 작성해주세요 / 분과명 여기에 제시할 것 </p>
+          <p>공고 제목을 작성해주세요</p>
       <input name="title" placeholder='title' value={state.title} 
         onChange={handleChangeState}
         />
