@@ -131,7 +131,7 @@ function RegisterPage() {
         {errors.name && <p>{errors.name.message}</p>}
         </div>
         <div style={{ margin: '56px 0'}}>
-        <button className='sumbitbutton' type="submit">제출하기</button>
+        <button className='sumbitbutton' type="submit">JOIN DUB</button>
         </div>
       </form>
     </div>
