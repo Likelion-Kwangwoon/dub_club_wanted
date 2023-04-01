@@ -51,8 +51,8 @@ function DetailInput() {
 
   return(
     <div className="detailInput">
-      <header>
-          <span className="pagetitle">동아리 모집 공고 작성</span>
+      <header className="detailheader">
+          <span>동아리 모집 공고 작성</span>
       </header>
 
     <form className='editor'
@@ -60,11 +60,10 @@ function DetailInput() {
       
       {/*<h2>동아리 모집 공고 작성</h2>*/}
       <div className='detailbody'>
+
       <div className='detailbodyheader'>동아리 이름은 무엇인가요?</div>
           <p className='detailbodyguide'>동아리 이름을 작성해주세요</p>
-          <div className='detailtextarea'>
           <textarea className='textarea' name="clubName" placeholder='clubname' value={state.clubName} onChange={handleChangeState}/>
-          </div>
       
       <div className='detailbodyheader'>동아리 분과를 입력해주세요</div>
         <p className='detailbodyguide'>분과명은 체육/예술 .. </p>
@@ -97,12 +96,14 @@ function DetailInput() {
       <div>
       <div className='detailbodyheader'>동아리 설명 </div>
       <p className='detailbodyguide'>당신의 동아리를 마음껏 설명해주세요</p>
+      <div className='detailtextarea'>
       <textarea className='textarea' name="content" placeholder='textarea' autoSize={{
-          minRows: 3,
-          maxRows: 7,
+          minRows: 5,
+          maxRows: 100,
         }} value={state.content} 
         onChange={handleChangeState}
         />
+      </div>
       </div>
       <button className="Button" type='submit'>게시하기</button>
       </div>

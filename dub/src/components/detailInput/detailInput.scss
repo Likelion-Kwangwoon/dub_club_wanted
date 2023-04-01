@@ -14,6 +14,16 @@ $gray: #888;
         align-items: center;
 }
 
+.detailheader {
+        justify-content: center;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        font-size: 30px;
+        font-weight: 700;
+        color: #2B3A55;
+        left: 5%;  
+}
 
 .Button { 
     margin: 0 0 0 8px;
@@ -29,15 +39,9 @@ $gray: #888;
     padding: 3px 8px;
     line-height: 14px;
     margin-bottom: 10px;
+    margin-top:10px;
 }
 
-.pagetitle {
-
-        font-size: 30px;
-        font-weight: 700;
-        color: #2B3A55;
-        left: 5%;  
-}
 
 .detailbody {
         margin-bottom: 3px;
@@ -64,7 +68,6 @@ $gray: #888;
         padding: 10px;
         font-size: 20px;
         background-color: #f3f9fe;
-        
         line-height: 1.42;
         letter-spacing: normal;
         color: #666;
