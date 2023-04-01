@@ -19,13 +19,15 @@ function TopBar() {
 
   return(
     <header>
-      <span onClick={gotoMain}><h1>dub</h1></span>
+      <span onClick={gotoMain} style={{  fontSize:'40px' , marginLeft:'20px', display: 'inline-block' }}>dub</span>
+      <ul className='navMenu'>
       <nav>
-        <span onClick={gotoInput}>글작성</span>
-        <span>지원하기</span>
-        <span onClick={gotoLogin}>로그인</span>
-        <span onClick={gotoRegister}>회원가입</span>
+        <span className='menu' onClick={gotoInput}>글작성</span>
+        <span className='menu'>지원하기</span>
+        <span className='menu' onClick={gotoLogin}>로그인</span>
+        <span className='menu' onClick={gotoRegister}>회원가입</span>
       </nav>
+      </ul>
     </header>
   );
 }

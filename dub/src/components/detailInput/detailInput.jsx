@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import '../sass/Button.scss';
+//import '../sass/Button.scss';
 import './detailInput.scss';
 //import Button from '@mui/material/Button';
 // import axios from 'axios';
@@ -51,39 +51,36 @@ function DetailInput() {
 
   return(
     <div className="detailInput">
+      <header className="detailheader">
+          <span>동아리 모집 공고 작성</span>
+      </header>
 
     <form className='editor'
           onSubmit={(e) => handleSubmit(e)}>
-      <h2>동아리 모집 공고 작성</h2>
-      <div   
-        style={{
-          margin: '56px 0',
-        }}>
-          <p>동아리 이름은 무엇인가요?</p>
-        <input name="clubName" placeholder='clubname' value={state.clubName}
+      
+      {/*<h2>동아리 모집 공고 작성</h2>*/}
+      <div className='detailbody'>
+
+      <div className='detailbodyheader'>동아리 이름은 무엇인가요?</div>
+          <p className='detailbodyguide'>동아리 이름을 작성해주세요</p>
+          <textarea className='textarea' name="clubName" placeholder='clubname' value={state.clubName} onChange={handleChangeState}/>
+      
+      <div className='detailbodyheader'>동아리 분과를 입력해주세요</div>
+        <p className='detailbodyguide'>분과명은 체육/예술 .. </p>
+      <textarea className='textarea' name="category" placeholder='category' value={state.category}
+        onChange={handleChangeState}
+        />
+      
+      <div>
+          <div className='detailbodyheader'>공고 제목을 작성해주세요</div>
+          <p className='detailbodyguide'>모든 학우들의 눈을 사로잡을만한 제목을 작성해주세요</p>
+      <textarea className='textarea' name="title" placeholder='title' value={state.title} 
         onChange={handleChangeState}
         />
       </div>
-      <div style={{
-          margin: '56px 0',
-        }}>
-          <p>동아리 분과를 입력해주세요 / 분과명 여기에 제시할 것</p>
-      <input name="category" placeholder='category' value={state.category}
-        onChange={handleChangeState}
-        />
-      </div>
-      <div style={{
-          margin: '56px 0',
-        }}>
-          <p>공고 제목을 작성해주세요</p>
-      <input name="title" placeholder='title' value={state.title} 
-        onChange={handleChangeState}
-        />
-      </div>
-      <div style={{
-          margin: '56px 0',
-        }}>
-          
+      <div>
+      <div className='detailbodyheader'>글과 함께 게시할 이미지를 선택해주세요</div>
+      <p className='detailbodyguide'>이미지를 선택해주세요</p>
       <input type="file"
             name="image" 
             placeholder='image/jpg/png/jpeg'
@@ -96,18 +93,19 @@ function DetailInput() {
         {imageSrc && <img src={imageSrc} alt='preview-img'/>}
       </div>
       </div>
-      <div style={{
-          margin: '56px 0',
-        }}>
-      <textarea name="content" placeholder='textarea' autoSize={{
-          minRows: 3,
-          maxRows: 7,
+      <div>
+      <div className='detailbodyheader'>동아리 설명 </div>
+      <p className='detailbodyguide'>당신의 동아리를 마음껏 설명해주세요</p>
+      <div className='detailtextarea'>
+      <textarea className='textarea' name="content" placeholder='textarea' autoSize={{
+          minRows: 5,
+          maxRows: 100,
         }} value={state.content} 
         onChange={handleChangeState}
         />
       </div>
-      <div>
-        <button className="Button" type='submit'>게시하기</button>
+      </div>
+      <button className="Button" type='submit'>게시하기</button>
       </div>
     </form>
     </div>

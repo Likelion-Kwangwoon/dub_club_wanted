@@ -1,12 +1,110 @@
+$gray: #888;
+
 .detailInput{
 
-        max-width: 400px;
-        display: flex;
-        width: 100%;
-        height : 800px;
+        max-width: 1500px;
+        display:inline-block;
+        width: 50%;
+        height : auto;
         margin: 0 auto;
         margin-top: 4rem;
-        border: 1px solid black;
+        border: 1px solid #e1e2e3;
         padding: 1rem;
-      
+        background-color: white;
+        align-items: center;
 }
+
+.detailheader {
+        justify-content: center;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        font-size: 30px;
+        font-weight: 700;
+        color: #2B3A55;
+        left: 5%;  
+}
+
+.Button { 
+    margin: 0 0 0 8px;
+    background-color: #fff;
+    color: #2B3A55;
+    border-radius: 50px;
+    border-color: #2B3A55;
+    width: 250px;
+    height: 90px;
+    font-size: 30px;
+    font-weight: 700;
+    
+    padding: 3px 8px;
+    line-height: 14px;
+    margin-bottom: 10px;
+    margin-top:10px;
+}
+
+
+.detailbody {
+        margin-bottom: 3px;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        display: block;
+        color: #2B3A55;
+}
+
+.detailbodyheader {
+        padding: 20px 0 6px;
+        font-size: 25px;
+        font-weight: 500;
+        color: #3b3d40;
+        border-bottom: 1px solid #bababa;
+
+}
+
+.detailbodyguide {
+        white-space: pre-wrap;
+        padding: 10px;
+        font-size: 20px;
+        background-color: #f3f9fe;
+        line-height: 1.42;
+        letter-spacing: normal;
+        color: #666;
+        margin-top: 5px;
+}
+
+
+.detailtextarea {
+        position: relative;
+        overflow-x: hidden;
+        background: transparent;
+        height: 200px;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+}
+
+
+
+.textarea {
+        white-space: pre-wrap;
+        word-break: break-all;
+        word-wrap: break-word;
+        caret-color: #000;
+        overflow: hidden;
+        line-height: 22px;
+        -webkit-box-shadow: none!important;
+        box-shadow: none!important;
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        margin-bottom: 3px;
+        border-radius: 0;
+        height: 200px;
+        width: 100%;
+        font-size: 20px;
+}
+
