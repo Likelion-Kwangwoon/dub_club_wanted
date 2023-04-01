@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { url } from '../../Url';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './registerPage.scss';
 
 function RegisterPage() {
   const navigate = useNavigate();
@@ -79,37 +80,59 @@ function RegisterPage() {
   }
   return (
     <div className="register">
-      <h1>React Input Test!</h1>
+      <h1 className='dub'>dub</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input name="email" placeholder="이메일" {...register('email')} />
+        <span className='registertext'>지금 바로 CLUB DUB에 회원가입하세요</span>
+        <div style={{ margin: '56px 0'}}>
+        <div className="css-1isrpua">이메일</div>
+        <input name="email" placeholder="이메일" className='inputform' {...register('email')} />
         {errors.email && <p>{errors.email.message}</p>}
+        </div>
+        <div style={{ margin: '56px 0'}}>
+        <div className="css-1isrpua">비밀번호</div>
         <input
           type="password"
           name="password"
           placeholder="비밀번호"
+          className='inputform'
           {...register('password')}
         />
         {errors.password && <p>{errors.password.message}</p>}
+        </div>
+        <div style={{ margin: '56px 0'}}>
+        <div className="css-1isrpua">비밀번호 확인</div>
         <input
           type="password"
           name="passwordConfirm"
           placeholder="비밀번호 확인"
+          className='inputform'
           {...register('passwordConfirm')}
         />
         {errors.passwordConfirm && <p>{errors.passwordConfirm.message}</p>}
+        </div>
+        <div style={{ margin: '56px 0'}}>
+        <div className="css-1isrpua">사용자</div>
         <select
+        className='useroption'
           {...register('role')} >
           <option value="USER">개인</option>
           <option value="CLUB">동아리</option>
         </select>
         {errors.role && errors.role.message}
+        </div>
+        <div style={{ margin: '56px 0'}}>
+        <div className="css-1isrpua">이름</div>
         <input
           name="name"
           placeholder="이름 / 단체명"
+          className='inputform'
           {...register('name')}
         />
         {errors.name && <p>{errors.name.message}</p>}
-        <input type="submit" />
+        </div>
+        <div style={{ margin: '56px 0'}}>
+        <button className='sumbitbutton' type="submit">제출하기</button>
+        </div>
       </form>
     </div>
   );

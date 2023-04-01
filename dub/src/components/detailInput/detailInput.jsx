@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import '../sass/Button.scss';
-import '../sass/detailInput.scss';
+import './detailInput.scss';
 //import Button from '@mui/material/Button';
 // import axios from 'axios';
 function DetailInput() {
