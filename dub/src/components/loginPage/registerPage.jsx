@@ -14,6 +14,10 @@ function RegisterPage() {
     navigate("/loginpage");
   }
 
+  const gotoMain = () => {
+    navigate("/");
+  }
+
   const formSchema = yup.object({
     email: yup
       .string()
@@ -80,12 +84,12 @@ function RegisterPage() {
   }
   return (
     <div className="register">
-      <h1 className='dub'>dub</h1>
+      <h1 className='dub' onClick={gotoMain}>dub</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <span className='registertext'>지금 바로 CLUB DUB에 회원가입하세요</span>
         <div style={{ margin: '56px 0'}}>
         <div className="css-1isrpua">이메일</div>
-        <input name="email" placeholder="이메일" className='inputform' {...register('email')} />
+        <input name="email" placeholder="ex) kwu@naver.com" className='inputform' {...register('email')} />
         {errors.email && <p>{errors.email.message}</p>}
         </div>
         <div style={{ margin: '56px 0'}}>

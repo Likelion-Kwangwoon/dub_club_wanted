@@ -21,7 +21,7 @@ function TopBar() {
     <header>
       <span onClick={gotoMain} style={{  fontSize:'40px' , marginLeft:'20px', display: 'inline-block' }}>dub</span>
       <ul className='navMenu'>
-      <nav style={{float: 'right'}}>
+      <nav>
         <span className='menu' onClick={gotoInput}>글작성</span>
         <span className='menu'>지원하기</span>
         <span className='menu' onClick={gotoLogin}>로그인</span>
