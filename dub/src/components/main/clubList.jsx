@@ -13,7 +13,6 @@ function ClubList() {
       await axios.get(
         `${url}/app/post/getAll`
       ).then(response => {
-        console.log(response.data)
         setClubs(response.data.result)
       })
     }
