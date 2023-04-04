@@ -1,21 +1,48 @@
-import { configureStore, createAction, createReducer } from "@reduxjs/toolkit";
+import { configureStore, createAction, createReducer, combineReducers } from "@reduxjs/toolkit";
+import { persistReducer } from'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import {
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER
+} from "redux-persist";
 
 export const logIn = createAction("LOGIN");
 export const logOut = createAction("LOGOUT");
 
+const initialState = { token: "" };
 
-const reducer = createReducer([], {
-  [logIn]: (state, action) => {
-    state += action.payload
-    console.log(state)
-  },
-  [logOut]: (state, action) => {
-    console.log(state);
-    state = action.payload
-    console.log(state);
-  }
+const persistConfig = {
+  key: "root",
+  storage,
+}
+const reducer = createReducer(initialState, (builder) => {
+  builder
+    .addCase(logIn, (state, action) => {
+      state.token = action.payload
+    })
+    .addCase(logOut, (state) => {
+      state.token = ""
+    })
+})
+
+const rootReducer = combineReducers({
+  reducer
 });
 
-const store = configureStore({ reducer });
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+    }
+  }),
+});
+
 export default store;
 

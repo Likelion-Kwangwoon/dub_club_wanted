@@ -34,7 +34,6 @@ function LoginPage() {
         `${url}/app/member/sign-in`,
         body
       ).then(response => {
-        console.log(response.data.result)
         dispatch(logIn(response.data.result));
         navigate("/")
       });

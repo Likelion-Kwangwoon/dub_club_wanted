@@ -4,9 +4,11 @@ import axios from 'axios';
 // import clubdata from "../../dummy/clubdata.json";
 import { url } from '../../Url';
 import './clubList.scss'
+// import { useNavigate } from 'react-router-dom';
 function ClubList() {
-  // const data = clubdata;
+
   const [clubs, setClubs] = useState([]);
+  // const navigate = useNavigate();
 
   useEffect(() => {
     const getClub = async () => {
@@ -24,10 +26,14 @@ function ClubList() {
         console.log('글을 불러올 수 없습니다.');
       } else {
         // unexpected 에러가 발생한 경우
-        console.log('글을 지우는 과정에서 예상치 못한 에러가 발생했습니다.');
+        console.log('글을 불러 오는 과정에서 예상치 못한 에러가 발생했습니다.');
     }
   }
   }, []);
+
+  const onClickClub = (id) => {
+
+  }
   return(
     <div className='Club-container'>
       <ul className='Club-list'>
@@ -35,7 +41,7 @@ function ClubList() {
           clubs.map((club, index) => {
             return (
               <li className='Club-card-container' key={index}>
-                <div className='Club-card'>
+                <div className='Club-card' onClick={onClickClub(club.id)}>
                   <h2>{club.image}</h2>
                   <h2>{club.title}</h2>
                   <h2>{club.clubName}</h2>
