@@ -88,12 +88,12 @@ function RegisterPage() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <span className='registertext'>지금 바로 CLUB DUB에 회원가입하세요</span>
         <div style={{ margin: '56px 0'}}>
-        <div className="css-1isrpua">이메일</div>
+        <div className="inputheader">이메일</div>
         <input name="email" placeholder="ex) kwu@naver.com" className='inputform' {...register('email')} />
         {errors.email && <p>{errors.email.message}</p>}
         </div>
         <div style={{ margin: '56px 0'}}>
-        <div className="css-1isrpua">비밀번호</div>
+        <div className="inputheader">비밀번호</div>
         <input
           type="password"
           name="password"
@@ -104,7 +104,7 @@ function RegisterPage() {
         {errors.password && <p>{errors.password.message}</p>}
         </div>
         <div style={{ margin: '56px 0'}}>
-        <div className="css-1isrpua">비밀번호 확인</div>
+        <div className="inputheader">비밀번호 확인</div>
         <input
           type="password"
           name="passwordConfirm"
@@ -115,7 +115,7 @@ function RegisterPage() {
         {errors.passwordConfirm && <p>{errors.passwordConfirm.message}</p>}
         </div>
         <div style={{ margin: '56px 0'}}>
-        <div className="css-1isrpua">사용자</div>
+        <div className="inputheader">사용자</div>
         <select
         className='useroption'
           {...register('role')} >
@@ -125,7 +125,7 @@ function RegisterPage() {
         {errors.role && errors.role.message}
         </div>
         <div style={{ margin: '56px 0'}}>
-        <div className="css-1isrpua">이름</div>
+        <div className="inputheader">이름</div>
         <input
           name="name"
           placeholder="이름 / 단체명"
@@ -135,7 +135,7 @@ function RegisterPage() {
         {errors.name && <p>{errors.name.message}</p>}
         </div>
         <div style={{ margin: '56px 0'}}>
-        <button className='sumbitbutton' type="submit">JOIN DUB</button>
+        <button className='submitbutton' type="submit">JOIN DUB</button>
         </div>
       </form>
     </div>

@@ -14,6 +14,10 @@ function LoginPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const gotoMain = () => {
+    navigate("/");
+  }
+
   const onEmailHandler = (event) => {
       setEmail(event.currentTarget.value);
   }
@@ -42,16 +46,21 @@ function LoginPage() {
     }
   }
   return(
-    <div>
-      <h1>로그인 페이지</h1>
-      <form style={{display: 'flex', flexDirection: 'column'}}
-        onSubmit={onSubmitHandler}>
-        <label>Email</label>
-        <input type="email" value={Email} onChange={onEmailHandler} />
-        <label>Password</label>
-        <input type="password" value={Password} onChange={onPasswordHandler} />
-        <br />
-        <button type="submit">Login</button>
+    <div className="login">
+      <h1 className='dub' onClick={gotoMain}>dub</h1>
+      <form onSubmit={onSubmitHandler}>
+        <span className='logintext'>지금 바로 CLUB DUB에 로그인하세요</span>
+        <div style={{ margin: '56px 0'}}>
+        <div className="inputheader">이메일</div>
+        <input type="email" placeholder="ex) kwu@naver.com" className='inputform' value={Email} onChange={onEmailHandler} />
+        </div>
+        <div style={{ margin: '56px 0'}}>
+        <div className="inputheader">비밀번호</div>
+        <input type="password" placeholder="비밀번호" className='inputform' value={Password} onChange={onPasswordHandler} />
+        </div>
+        <div style={{ margin: '56px 0'}}>
+        <button className='submitbutton' type="submit">LOGIN DUB</button>
+        </div>
       </form>
     </div>
   )
