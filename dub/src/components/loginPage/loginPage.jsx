@@ -50,7 +50,7 @@ function LoginPage() {
       <h1 className='dub' onClick={gotoMain}>dub</h1>
       <form onSubmit={onSubmitHandler}>
         <span className='logintext'>지금 바로 CLUB DUB에 로그인하세요</span>
-        <div style={{ margin: '56px 0'}}>cd 
+        <div style={{ margin: '56px 0'}}>
         <div className="inputheader">이메일</div>
         <input type="email" placeholder="ex) kwu@naver.com" className='inputform' value={Email} onChange={onEmailHandler} />
         </div>

@@ -51,9 +51,9 @@ function DetailInput() {
 
   return(
     <div className="detailInput">
-      <header className="detailheader">
+      <div className="detailheader">
           <span>동아리 모집 공고 작성</span>
-      </header>
+      </div>
 
     <form className='editor'
           onSubmit={(e) => handleSubmit(e)}>

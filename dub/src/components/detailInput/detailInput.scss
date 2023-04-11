@@ -1,26 +1,25 @@
 $gray: #888;
 
 .detailInput{
-
         max-width: 1500px;
         display:inline-block;
         width: 50%;
         height : auto;
         margin: 0 auto;
         margin-top: 4rem;
-        border: 1px solid #e1e2e3;
         padding: 1rem;
         background-color: white;
         align-items: center;
 }
-
 .detailheader {
         justify-content: left;
         display: flex;
-        font-size: 30px;
+        font-size: 50px;
         font-weight: 700;
         color: #2B3A55;
+        border: none;
         left: 5%;  
+        margin-bottom: 3px;
 }
 
 .Button { 
