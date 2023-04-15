@@ -2,51 +2,114 @@ import React from 'react';
 import { useState } from 'react';
 //import '../sass/Button.scss';
 import './detailInput.scss';
-//import Button from '@mui/material/Button';
-// import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import imageCompression from 'browser-image-compression';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
+import { url } from '../../Url';
 function DetailInput() {
-  const [state, setState] = useState({
-    image:"",
-    title:"",
-    clubName:"",
-    content:"",
-    category:""
-  });
 
-  
-
+  const [name, setName] = useState('');
+  const [category, setCategory] = useState('');
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
   const [imageSrc, setImageSrc] = useState('');
+  const [image, setImage] = useState(null);
 
-  const encodeFileToBase64 = (fileBlob) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(fileBlob);
-    return new Promise((resolve) => {
-      reader.onload = () => {
-        setImageSrc(reader.result);
-        resolve();
-      };
-    });
-  };
+  const navigate = useNavigate();
+  const token = useSelector((state) => state.reducer.token); 
+  // const encodeFileToBase64 = (fileBlob) => {
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(fileBlob);
+  //   return new Promise((resolve) => {
+  //     reader.onload = () => {
+  //       setImageSrc(reader.result);
+  //       resolve();
+  //     };
+  //   });
+  // };
 
-  const handleChangeState = (e) => {
-    console.log(e.target.name);
-    console.log(e.target.value);
+  const imageResize = async(e) => {
+    let file = e.target.files[0];
+    setImage(file);
 
-    setState({
-      ...state,
-      [e.target.name]: e.target.value,
-    });
-  };
+    const option = {
+      maxSizeMB: 2,
+      maxWidthOrHeight: 150,
+    }
+
+    try {
+      const compressedFile = await imageCompression(file, option);
+      const promise = imageCompression.getDataUrlFromFile(compressedFile);
+      promise.then(result => {
+        setImageSrc(result);
+      })
+    } catch (error) {
+      console.log(error);
+      alert("글 작성 실패");
+    }
+  }
+  // const handleChangeState = (e) => {
+  //   console.log(e.target.name);
+  //   console.log(e.target.value);
+
+  //   setState({
+  //     ...state,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // };
+
+  const handleName = (e) => {
+    e.preventDefault();
+    setName(e.target.value);
+  }
+  const handleCategory = (e) => {
+    e.preventDefault();
+    setCategory(e.target.value);
+  }
+  const handleTitle = (e) => {
+    e.preventDefault();
+    setTitle(e.target.value);
+  }
+  const handleContent = (e) => {
+    e.preventDefault();
+    setContent(e.target.value);
+  }
 
   const handleSubmit = (e) => {
-    setState({
-      ...state,
-      [e.target.name]: e.target.value,
-      image:imageSrc,
-    })
-    console.log(state);
-    
-    alert("저장 성공");
+    // setState({
+    //   ...state,
+    //   [e.target.name]: e.target.value,
+    //   image:imageSrc,
+    // })
+    // console.log(state);
+    e.preventDefault();
+    const formData = new FormData();
+    // formData.append('name', name);
+    formData.append('category', category);
+    formData.append('title', title);
+    formData.append('content', content);
+    formData.append('images', image);
+
+    try {
+      axios.post(
+        `${url}/app/post/write-post`,
+        {
+          json : formData,
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      ).then(response => {
+        alert(response.result);
+        navigate('/')
+      })
+    } catch(error) {
+      console.log(error);
+      alert(error);
+    }
   }
 
   return(
@@ -63,19 +126,19 @@ function DetailInput() {
 
       <div className='detailbodyheader'>동아리 이름은 무엇인가요?</div>
           <p className='detailbodyguide'>• 동아리 이름을 작성해주세요</p>
-          <textarea className='textarea' name="clubName" placeholder='clubname' value={state.clubName} onChange={handleChangeState}/>
+          <textarea className='textarea' name="clubName" placeholder='clubname' value={name} onChange={handleName}/>
       
       <div className='detailbodyheader'>동아리 분과를 입력해주세요</div>
         <p className='detailbodyguide'>• 분과명은 체육/예술 .. </p>
-      <textarea className='textarea' name="category" placeholder='category' value={state.category}
-        onChange={handleChangeState}
+      <textarea className='textarea' name="category" placeholder='category' value={category}
+        onChange={handleCategory}
         />
       
       <div>
           <div className='detailbodyheader'>공고 제목을 작성해주세요</div>
           <p className='detailbodyguide'>• 모든 학우들의 눈을 사로잡을만한 제목을 작성해주세요</p>
-      <textarea className='textarea' name="title" placeholder='title' value={state.title} 
-        onChange={handleChangeState}
+      <textarea className='textarea' name="title" placeholder='title' value={title} 
+        onChange={handleTitle}
         />
       </div>
       <div>
@@ -86,7 +149,7 @@ function DetailInput() {
             placeholder='image/jpg/png/jpeg'
             accept="image/jpg, image/png, image/jpeg"
             onChange={(e) => {
-              encodeFileToBase64(e.target.files[0]);
+              imageResize(e);
             }}
         />
       <div className='preview'>
@@ -100,8 +163,8 @@ function DetailInput() {
       <textarea className='textarea' name="content" placeholder='textarea' autoSize={{
           minRows: 5,
           maxRows: 100,
-        }} value={state.content} 
-        onChange={handleChangeState}
+        }} value={content} 
+        onChange={handleContent}
         />
       </div>
       </div>
