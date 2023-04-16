@@ -77,29 +77,40 @@ function DetailInput() {
   }
 
   const handleSubmit = (e) => {
-    // setState({
-    //   ...state,
-    //   [e.target.name]: e.target.value,
-    //   image:imageSrc,
-    // })
-    // console.log(state);
-    e.preventDefault();
-    const formData = new FormData();
-    // formData.append('name', name);
-    formData.append('category', category);
-    formData.append('title', title);
-    formData.append('content', content);
-    formData.append('images', image);
 
+    e.preventDefault();
+    const submitData = {
+      'title' : title,
+      'content' : content,
+      'category' : category,
+    };
+    console.log(submitData);
+    const formData = new FormData();
+
+    formData.append('json', submitData);
+    formData.append('images', image);
+    // FormData의 key 확인
+    // @ts-ignore
+    for (const key of formData.keys()) {
+      console.log(key);
+    }
+    // FormData의 value 확인
+    // @ts-ignore
+    for (const value of formData.values()) {
+      console.log(value);
+    }
+    console.log(formData);
     try {
       axios.post(
         `${url}/app/post/write-post`,
         {
-          json : formData,
+          data: formData,
         },
         {
           headers: {
-            Authorization: token,
+            Authorization : token,
+            'Content-Type': 'multipart/form-data',
+            "Access-Control-Allow-Origin": "*",
           },
         }
       ).then(response => {
@@ -147,7 +158,7 @@ function DetailInput() {
       <input type="file"
             name="image" 
             placeholder='image/jpg/png/jpeg'
-            accept="image/jpg, image/png, image/jpeg"
+            accept="image/png, image/jpeg"
             onChange={(e) => {
               imageResize(e);
             }}
