@@ -18,21 +18,10 @@ function DetailInput() {
 
   const navigate = useNavigate();
   const token = useSelector((state) => state.reducer.token); 
-  // const encodeFileToBase64 = (fileBlob) => {
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(fileBlob);
-  //   return new Promise((resolve) => {
-  //     reader.onload = () => {
-  //       setImageSrc(reader.result);
-  //       resolve();
-  //     };
-  //   });
-  // };
 
   const imageResize = async(e) => {
     let file = e.target.files[0];
     setImage(file);
-
     const option = {
       maxSizeMB: 2,
       maxWidthOrHeight: 150,
@@ -49,15 +38,6 @@ function DetailInput() {
       alert("글 작성 실패");
     }
   }
-  // const handleChangeState = (e) => {
-  //   console.log(e.target.name);
-  //   console.log(e.target.value);
-
-  //   setState({
-  //     ...state,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
 
   const handleName = (e) => {
     e.preventDefault();
@@ -90,12 +70,10 @@ function DetailInput() {
     formData.append('json', submitData);
     formData.append('images', image);
     // FormData의 key 확인
-    // @ts-ignore
     for (const key of formData.keys()) {
       console.log(key);
     }
     // FormData의 value 확인
-    // @ts-ignore
     for (const value of formData.values()) {
       console.log(value);
     }
@@ -103,22 +81,20 @@ function DetailInput() {
     try {
       axios.post(
         `${url}/app/post/write-post`,
-        {
-          data: formData,
-        },
+        formData,
         {
           headers: {
             Authorization : token,
             'Content-Type': 'multipart/form-data',
-            "Access-Control-Allow-Origin": "*",
           },
-        }
+          transformRequest: formData => formData,
+        },
       ).then(response => {
         alert(response.result);
         navigate('/')
       })
     } catch(error) {
-      console.log(error);
+      console.log(error.response);
       alert(error);
     }
   }
