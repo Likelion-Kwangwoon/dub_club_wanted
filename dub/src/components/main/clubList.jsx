@@ -36,16 +36,17 @@ function ClubList() {
   }
   return(
     <div className='Club-container'>
+      <h1>나에게 필요한 동아리 인사이트</h1>
       <ul className='Club-list'>
         {
           clubs.map((club, index) => {
             return (
               <li className='Club-card-container' key={index}>
                 <div className='Club-card' onClick={onClickClub(club.id)}>
-                  <h2>{club.image}</h2>
-                  <h2>{club.title}</h2>
-                  <h2>{club.clubName}</h2>
-                  <h2>{club.category}</h2>
+                  <h2 className='Club-Thumbnail'>{club.image}</h2>
+                  <h2 className='Club-Title'>{club.title}</h2>
+                  <h2 className='Club-Name'>{club.clubName}</h2>
+                  <h2 className='Club-Category'>{club.category}</h2>
                 </div>
               </li>
             )
