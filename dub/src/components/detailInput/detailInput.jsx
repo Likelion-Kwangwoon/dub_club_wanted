@@ -45,7 +45,7 @@ function DetailInput() {
   }
   const handleCategory = (e) => {
     e.preventDefault();
-    setCategory(e.target.value);
+    setCategory(parseInt(e.target.value));
   }
   const handleTitle = (e) => {
     e.preventDefault();
@@ -56,7 +56,7 @@ function DetailInput() {
     setContent(e.target.value);
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
 
     e.preventDefault();
     const submitData = {
@@ -67,8 +67,10 @@ function DetailInput() {
     console.log(submitData);
     const formData = new FormData();
 
-    formData.append('json', submitData);
-    formData.append('images', image);
+    //formData.append('json', JSON.stringify(submitData));
+    //formData.append('images', image);
+    formData.append('json', new Blob([JSON.stringify(submitData)], {type: "application/json"}));
+    formData.append('images', 'image');
     // FormData의 key 확인
     for (const key of formData.keys()) {
       console.log(key);
@@ -87,8 +89,9 @@ function DetailInput() {
             Authorization : token,
             'Content-Type': 'multipart/form-data',
           },
-          transformRequest: formData => formData,
-        },
+          //transformRequest: formData => formData,
+          //withCredentials: true
+        }
       ).then(response => {
         alert(response.result);
         navigate('/')
@@ -98,11 +101,51 @@ function DetailInput() {
       alert(error);
     }
   }
+  const test = async (e) => {
+    e.preventDefault()
+    const submitData = {
+      'title' : title,
+      'content' : content,
+      'category' : category,
+    };
+    console.log(submitData);
+    const formData = new FormData();
 
+    formData.append('json', new Blob([JSON.stringify(submitData)], {type: "application/json"}));
+    // FormData의 key 확인
+    for (const key of formData.keys()) {
+      console.log(key);
+    }
+    // FormData의 value 확인
+    for (const value of formData.values()) {
+      console.log(value);
+    }
+    console.log(formData);
+    try {
+      await axios.post(
+        `${url}/app/post/writing`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization : token,
+          },
+          //withCredentials: true
+        }
+      ).then(response => {
+        alert(response.result);
+        navigate('/')
+      })
+    } catch(error) {
+      console.log(error);
+      alert(error.message);
+    }
+  }
   return(
     <div className="detailInput">
       <div className="detailheader">
           <span>동아리 모집 공고 작성</span>
+          <button onClick={test}>test</button>
       </div>
 
     <form className='editor'
