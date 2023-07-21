@@ -19,7 +19,7 @@ function TopBar() {
     navigate("/detailinput");
   }
   const gotoRegister = () => {
-    navigate("/registerpage");
+    navigate("/classify");
   }
   const gotoLogOut = () => {
     dispatch(logOut([]))

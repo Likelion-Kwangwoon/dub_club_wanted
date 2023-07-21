@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './registerPage.scss';
 
-function RegisterPage() {
+function MemberRegister() {
   const navigate = useNavigate();
 
   const gotoLogin = () => {
@@ -35,9 +35,9 @@ function RegisterPage() {
     passwordConfirm: yup
       .string()
       .oneOf([yup.ref('password')], '비밀번호가 다릅니다.'),
-    role: yup
+    gender: yup
       .string()
-      .required('회원 구분을 선택해주세요.'),
+      .required('성별을 선택해주세요.'),
     name: yup
         .string()
         .required('이름을 입력해주세요.'),
@@ -60,7 +60,7 @@ function RegisterPage() {
         { email: formData.email,
           name: formData.name,
           password: formData.password,
-          role: formData.role},
+          gender: formData.gender},
     ).then(response => {
       console.log(response.data);
       switch(response.data.code) {
@@ -86,7 +86,7 @@ function RegisterPage() {
     <div className="register">
       <h1 className='dub' onClick={gotoMain}>dub</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <span className='registertext'>지금 바로 CLUB DUB에 회원가입하세요</span>
+        <span className='registertext'>지금 바로 CLUB DUB에 가입하세요</span>
         <div style={{ margin: '56px 0'}}>
         <div className="inputheader">이메일</div>
         <input name="email" placeholder="ex) kwu@naver.com" className='inputform' {...register('email')} />
@@ -115,25 +115,26 @@ function RegisterPage() {
         {errors.passwordConfirm && <p>{errors.passwordConfirm.message}</p>}
         </div>
         <div style={{ margin: '56px 0'}}>
-        <div className="inputheader">사용자</div>
-        <select
-        className='useroption'
-          {...register('role')} >
-          <option value="USER">개인</option>
-          <option value="CLUB">동아리</option>
-        </select>
-        {errors.role && errors.role.message}
-        </div>
-        <div style={{ margin: '56px 0'}}>
         <div className="inputheader">이름</div>
         <input
           name="name"
-          placeholder="이름 / 단체명"
+          placeholder="이름"
           className='inputform'
           {...register('name')}
         />
         {errors.name && <p>{errors.name.message}</p>}
         </div>
+        <div style={{ margin: '56px 0'}}>
+        <div className="inputheader">성별</div>
+        <select
+        className='useroption'
+          {...register('gender')} >
+          <option value="m">남</option>
+          <option value="f">여</option>
+        </select>
+        {errors.role && errors.role.message}
+        </div>
+        
         <div style={{ margin: '56px 0'}}>
         <button className='submitbutton' type="submit">JOIN DUB</button>
         </div>
@@ -142,4 +143,4 @@ function RegisterPage() {
   );
 }
 
-export default RegisterPage;
+export default MemberRegister;
