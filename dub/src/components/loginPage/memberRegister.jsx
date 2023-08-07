@@ -60,7 +60,8 @@ function MemberRegister() {
         { email: formData.email,
           name: formData.name,
           password: formData.password,
-          gender: formData.gender},
+          gender: formData.gender,
+          role: "USER"},
     ).then(response => {
       console.log(response.data);
       switch(response.data.code) {

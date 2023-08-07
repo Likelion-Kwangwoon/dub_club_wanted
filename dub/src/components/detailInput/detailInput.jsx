@@ -9,8 +9,6 @@ import axios from 'axios';
 import { url } from '../../Url';
 function DetailInput() {
 
-  const [name, setName] = useState('');
-  const [category, setCategory] = useState('');
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [imageSrc, setImageSrc] = useState('');
@@ -39,14 +37,6 @@ function DetailInput() {
     }
   }
 
-  const handleName = (e) => {
-    e.preventDefault();
-    setName(e.target.value);
-  }
-  const handleCategory = (e) => {
-    e.preventDefault();
-    setCategory(parseInt(e.target.value));
-  }
   const handleTitle = (e) => {
     e.preventDefault();
     setTitle(e.target.value);
@@ -62,15 +52,14 @@ function DetailInput() {
     const submitData = {
       'title' : title,
       'content' : content,
-      'category' : category,
+      'imgae' : image
     };
     console.log(submitData);
     const formData = new FormData();
 
-    //formData.append('json', JSON.stringify(submitData));
-    //formData.append('images', image);
-    formData.append('json', new Blob([JSON.stringify(submitData)], {type: "application/json"}));
-    formData.append('images', 'image');
+    formData.append('title', title);
+    formData.append('content', content);
+    formData.append('images', image);
     // FormData의 key 확인
     for (const key of formData.keys()) {
       console.log(key);
@@ -101,51 +90,10 @@ function DetailInput() {
       alert(error);
     }
   }
-  const test = async (e) => {
-    e.preventDefault()
-    const submitData = {
-      'title' : title,
-      'content' : content,
-      'category' : category,
-    };
-    console.log(submitData);
-    const formData = new FormData();
-
-    formData.append('json', new Blob([JSON.stringify(submitData)], {type: "application/json"}));
-    // FormData의 key 확인
-    for (const key of formData.keys()) {
-      console.log(key);
-    }
-    // FormData의 value 확인
-    for (const value of formData.values()) {
-      console.log(value);
-    }
-    console.log(formData);
-    try {
-      await axios.post(
-        `${url}/app/post/writing`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization : token,
-          },
-          //withCredentials: true
-        }
-      ).then(response => {
-        alert(response.result);
-        navigate('/')
-      })
-    } catch(error) {
-      console.log(error);
-      alert(error.message);
-    }
-  }
   return(
     <div className="detailInput">
       <div className="detailheader">
           <span>동아리 모집 공고 작성</span>
-          <button onClick={test}>test</button>
       </div>
 
     <form className='editor'
@@ -153,17 +101,6 @@ function DetailInput() {
       
       {/*<h2>동아리 모집 공고 작성</h2>*/}
       <div className='detailbody'>
-
-      <div className='detailbodyheader'>동아리 이름은 무엇인가요?</div>
-          <p className='detailbodyguide'>• 동아리 이름을 작성해주세요</p>
-          <textarea className='textarea' name="clubName" placeholder='clubname' value={name} onChange={handleName}/>
-      
-      <div className='detailbodyheader'>동아리 분과를 입력해주세요</div>
-        <p className='detailbodyguide'>• 분과명은 체육/예술 .. </p>
-      <textarea className='textarea' name="category" placeholder='category' value={category}
-        onChange={handleCategory}
-        />
-      
       <div>
           <div className='detailbodyheader'>공고 제목을 작성해주세요</div>
           <p className='detailbodyguide'>• 모든 학우들의 눈을 사로잡을만한 제목을 작성해주세요</p>
