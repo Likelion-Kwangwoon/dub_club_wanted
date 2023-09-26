@@ -7,6 +7,8 @@ import DetailInput from './components/detailInput/detailInput';
 import MemberClassify from './components/loginPage/memberClassify';
 import MemberRegister from './components/loginPage/memberRegister';
 import ClubRegister from './components/loginPage/clubRegister';
+import KakaoLogin from './components/loginPage/kakaoLogin'
+import KakaoLoginPage from './components/loginPage/socialLoginPage';
 function Router() {
   return(
     <BrowserRouter>
@@ -15,8 +17,10 @@ function Router() {
       </Fragment>
       <Fragment>
         <Routes>
-          <Route path='/' element={<MainPage />} />
+          <Route path="/redirect" element={<KakaoLogin />} />
+          <Route path='/MainPage' element={<MainPage />} />
           <Route path='/loginpage' element={<LoginPage />} />
+          <Route path='/' element={<KakaoLoginPage />} />
           <Route path='/detailinput' element={<DetailInput />} />
           <Route path='/classify' element={<MemberClassify />} />
           <Route path='/memregister' element={<MemberRegister />} />
