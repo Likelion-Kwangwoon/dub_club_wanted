@@ -1,10 +1,13 @@
-import './App.css';
 import Router from './Router';
+import { GlobalStyle } from './styles/globalStyle';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './styles/theme';
 function App() {
   return (
-    <div className="App">
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <Router />
-    </div>
+    </ThemeProvider>
   );
 }
 
