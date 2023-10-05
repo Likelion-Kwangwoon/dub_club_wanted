@@ -6,7 +6,8 @@ export const GlobalStyle = createGlobalStyle`
 
   :root {
     text-align: center;
-    max-width: 1920px;
+    width: 1920px;
+    height: 1080px;
     font-family: "Pretendard Variable";
     margin: 0 auto;
     -ms-overflow-style: none; 

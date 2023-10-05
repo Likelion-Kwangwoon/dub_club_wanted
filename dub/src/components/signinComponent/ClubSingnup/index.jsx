@@ -1,8 +1,8 @@
 import React from 'react';
 import * as S from './style';
 
-function CLubSignup () {
+function ClubSignup () {
 
 }
 
-export default CLubSignup;
+export default ClubSignup;

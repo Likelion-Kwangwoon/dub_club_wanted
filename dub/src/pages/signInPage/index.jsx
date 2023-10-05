@@ -1,16 +1,21 @@
 import React from 'react';
-import kakaoLogo from '../../assets/kakao_login.png';
-import logo from '../../assets/logo_dub.svg';
 import SigninSelector from '../../components/signinComponent/SigninSelector';
 import * as S from './style';
+import { Routes, Route } from 'react-router-dom';
+import ClubSignin from '../../components/signinComponent/ClubSignin';
+import ClubSignup from '../../components/signinComponent/ClubSingnup';
 
 function SigninPage() {
   return (
-    <S.PageWrapper>
-      <S.SigninWrapper>
-        <SigninSelector />
-      </S.SigninWrapper>
-    </S.PageWrapper>
+      <S.PageWrapper>
+        <S.SigninWrapper>
+          <Routes>
+            <Route exact path='' element={<SigninSelector />} />
+            <Route path='clubSignin' element={<ClubSignin />} />
+            <Route path='clubSignup' element={<ClubSignup />} />
+          </Routes>
+        </S.SigninWrapper>
+      </S.PageWrapper>
   );
 }
 

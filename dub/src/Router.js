@@ -1,32 +1,26 @@
 import { BrowserRouter, Routes, Route } from'react-router-dom';
-import React, { Fragment } from 'react';
-import MainPage from './components/main/mainPage';
-import TopBar from './components/navigation/topBar';
-import LoginPage from './components/loginPage/loginPage';
-import DetailInput from './components/detailInput/detailInput';
-import MemberClassify from './components/loginPage/memberClassify';
-import MemberRegister from './components/loginPage/memberRegister';
-import ClubRegister from './components/loginPage/clubRegister';
-import KakaoLogin from './components/loginPage/kakaoLogin'
-import KakaoLoginPage from './components/loginPage/socialLoginPage';
+import React from 'react';
+import SigninPage from './pages/signInPage';
+import SocialSignin from './components/signinComponent/SocialSignin';
+import MainWrapper from './layout';
+import MainPage from './pages/mainPage';
+import MyPage from './pages/myPage';
+import PostingPage from './pages/postingPage';
+import GridPage from './pages/gridPage';
+import ClubPage from './pages/clubPage';
 function Router() {
   return(
     <BrowserRouter>
-      <Fragment>
-        <TopBar />
-      </Fragment>
-      <Fragment>
-        <Routes>
-          <Route path="/redirect" element={<KakaoLogin />} />
-          <Route path='/MainPage' element={<MainPage />} />
-          <Route path='/loginpage' element={<LoginPage />} />
-          <Route path='/' element={<KakaoLoginPage />} />
-          <Route path='/detailinput' element={<DetailInput />} />
-          <Route path='/classify' element={<MemberClassify />} />
-          <Route path='/memregister' element={<MemberRegister />} />
-          <Route path='/clubregister' element={<ClubRegister />} />
-        </Routes>
-      </Fragment>
+      <Routes>
+        <Route path='/signin/*' element={<SigninPage />} />
+        <Route path="/redirect" element={<SocialSignin />} />
+        <Route element={<MainWrapper />} />
+          <Route path='/' element={<MainPage />} />
+          <Route path='/myPage' element={<MyPage />} />
+          <Route path='/postingPage' element={<PostingPage />} />
+          <Route path='/gridPage' element={<GridPage />} />
+          <Route path='/clubPage' element={<ClubPage />} />
+      </Routes>
     </BrowserRouter>
   )
 }
