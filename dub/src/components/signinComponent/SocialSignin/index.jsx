@@ -10,14 +10,15 @@ function SocialSignin () {
   const navigate = useNavigate();
   const [token, setToken] = useState("");
 
-  let authorizationCode = new URL(window.location.href).searchParams.get("code");
-  const handleToken = async (authorizationCode) => {
+  
+  const handleToken = async () => {
+    let authorizationCode = new URL(window.location.href).searchParams.get("code");
     console.log(authorizationCode)
     const res = await socialSignin(authorizationCode);
-    res.result && setToken(res.result)
+    console.log(res)
   }
-  handleToken(authorizationCode);
   useEffect( () => {
+    handleToken()
     if (token !== "" ) {
       dispatch(logIn(token));
       navigate("/")
@@ -26,7 +27,7 @@ function SocialSignin () {
       alert("로그인 오류")
       navigate("/signin")
     }
-  }, [dispatch, navigate, token]);
+  }, []);
   
   return (
     <div />

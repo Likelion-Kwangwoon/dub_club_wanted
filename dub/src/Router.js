@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from'react-router-dom';
 import React from 'react';
 import SigninPage from './pages/signInPage';
 import SocialSignin from './components/signinComponent/SocialSignin';
-import MainWrapper from './layout';
+import MainWrapper from './layout/MainWrapper';
 import MainPage from './pages/mainPage';
 import MyPage from './pages/myPage';
 import PostingPage from './pages/postingPage';
@@ -14,12 +14,13 @@ function Router() {
       <Routes>
         <Route path='/signin/*' element={<SigninPage />} />
         <Route path="/redirect" element={<SocialSignin />} />
-        <Route element={<MainWrapper />} />
+        <Route element={<MainWrapper />} >
           <Route path='/' element={<MainPage />} />
           <Route path='/myPage' element={<MyPage />} />
           <Route path='/postingPage' element={<PostingPage />} />
           <Route path='/gridPage' element={<GridPage />} />
           <Route path='/clubPage' element={<ClubPage />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   )

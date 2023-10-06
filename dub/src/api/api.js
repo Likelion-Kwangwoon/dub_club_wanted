@@ -9,14 +9,14 @@ export const socialSignin = async (code) => {
     const res = await axios.post(
       `${baseURL}/app/member/loginKakao`,
       {
-        "authorizationCode": code,
+        authorizationCode: code,
       },
     );
-    console.log(res.data)
+    console.log(res)
     return res.data;
   } catch (error) {
-    console.error(error);
-    return "";
+    console.error(error.response);
+    return error;
   }
 }
 const instanceUtil = axios.create({

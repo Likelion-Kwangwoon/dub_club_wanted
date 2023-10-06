@@ -1,6 +1,6 @@
 export const theme = {
   base: {
-    beige: "#e1d1b1",
+    beige: "#e1dbd1",
     white: "#f8f8f8",
     brown: "#91867A",
     black: "#373634",

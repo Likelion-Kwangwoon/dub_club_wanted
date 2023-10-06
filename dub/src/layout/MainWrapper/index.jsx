@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import Header from '../components/header';
+import Header from '../../components/header';
 import * as S from './style';
 
 function MainWrapper() {
@@ -7,7 +7,9 @@ function MainWrapper() {
     <>
       <Header />
       <S.Section>
-        <Outlet />
+        <S.OutletWrapper>
+          <Outlet />
+        </S.OutletWrapper>
       </S.Section>
     </>
   )

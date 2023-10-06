@@ -6,14 +6,15 @@ export const GlobalStyle = createGlobalStyle`
 
   :root {
     text-align: center;
+    font-family: "Pretendard Variable";
     width: 1920px;
     height: 1080px;
-    font-family: "Pretendard Variable";
-    margin: 0 auto;
     -ms-overflow-style: none; 
-    scrollbar-width: none;
-    &::-webkit-scrollbar{
-      display: none;
-    }
+    background-color: ${(props) => props.theme.base.white};
+  }
+
+  body {
+    width: 1920px;
+    height: 1080px;
   }
 `;
