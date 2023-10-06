@@ -1,11 +1,20 @@
 import styled from 'styled-components';
 
-export const TitleLogo = styled.div`
+export const SelectorWrapper = styled.div`
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center;  
+`
+export const TitleLogo = styled.img`
   width: 77px;
   height: 54px;
   flex-shrink: 0;
+  color:${(props) => props.theme.base.black};
 `
 export const KakaoButton = styled.button`
+  background-color: transparent;
+  border: none;
 `
 
 export const ClubSigninButton = styled.button`

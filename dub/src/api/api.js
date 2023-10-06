@@ -3,17 +3,20 @@ import store from "../redux/store";
 
 const baseURL = process.env.REACT_APP_URL;
 
-export const socialSignin = async (data) => {
+export const socialSignin = async (code) => {
   try {
+    console.log(typeof(code))
     const res = await axios.post(
       `${baseURL}/app/member/loginKakao`,
       {
-        authorizationCode: data,
+        "authorizationCode": code,
       },
     );
+    console.log(res.data)
     return res.data;
   } catch (error) {
     console.error(error);
+    return "";
   }
 }
 const instanceUtil = axios.create({

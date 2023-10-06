@@ -19,7 +19,7 @@ function SigninSelector () {
     window.location.href = KAKAO_AUTH_URL;
   }
   return(
-    <>
+    <S.SelectorWrapper>
       <S.TitleLogo src={dubLogo} alt="" />
       <S.KakaoButton onClick={handleSocialSignin}>
         <img src={kakaoLogin} alt='' />
@@ -27,7 +27,7 @@ function SigninSelector () {
       <S.ClubSigninButton>
         <p>동아리 로그인</p>
       </S.ClubSigninButton>
-    </>
+    </S.SelectorWrapper>
   );
 }
 

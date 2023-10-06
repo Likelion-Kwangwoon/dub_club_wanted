@@ -12,15 +12,21 @@ function SocialSignin () {
 
   let authorizationCode = new URL(window.location.href).searchParams.get("code");
   const handleToken = async (authorizationCode) => {
+    console.log(authorizationCode)
     const res = await socialSignin(authorizationCode);
-
-    res && setToken(res)
+    res.result && setToken(res.result)
   }
+  handleToken(authorizationCode);
   useEffect( () => {
-    handleToken(authorizationCode)
-    dispatch(logIn(`Bearer ${token}`));
-    navigate("/")
-  }, [dispatch, navigate, authorizationCode, token]);
+    if (token !== "" ) {
+      dispatch(logIn(token));
+      navigate("/")
+    }
+    else {
+      alert("로그인 오류")
+      navigate("/signin")
+    }
+  }, [dispatch, navigate, token]);
   
   return (
     <div />
