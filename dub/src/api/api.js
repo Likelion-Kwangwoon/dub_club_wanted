@@ -2,8 +2,8 @@ import axios from 'axios';
 import store from "../redux/store";
 
 const baseURL = process.env.REACT_APP_URL;
-
 export const socialSignin = async (code) => {
+  
   try {
     console.log(typeof(code))
     const res = await axios.post(
@@ -13,7 +13,7 @@ export const socialSignin = async (code) => {
       },
     );
     console.log(res)
-    return res.data;
+    return res;
   } catch (error) {
     console.error(error.response);
     return error;
