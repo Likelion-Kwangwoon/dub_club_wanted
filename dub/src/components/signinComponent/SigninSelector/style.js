@@ -15,15 +15,17 @@ export const TitleLogo = styled.img`
 `
 export const KakaoButton = styled.button`
   background-color: transparent;
-  border: none;
+  border-radius: 12px;
   margin-top: 404px;
+  border: none;
 `
 
 export const ClubSigninButton = styled.div`
   width: 183px;
   height: 45px;
-  border-radius: 12px;
-  background: ${(props) => props.theme.base.brown};;
+  border-radius: 4px;
+  background: ${(props) => props.theme.base.brown};
+  font-size: 15px;
   margin-top: 16px;
   display: grid;
   place-items: center;
