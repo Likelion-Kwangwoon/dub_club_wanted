@@ -5,7 +5,6 @@ const baseURL = process.env.REACT_APP_URL;
 export const socialSignin = async (code) => {
   
   try {
-    console.log(typeof(code))
     const res = await axios.post(
       `${baseURL}/app/member/loginKakao`,
       {
@@ -13,12 +12,30 @@ export const socialSignin = async (code) => {
       },
     );
     console.log(res)
-    return res;
+    return res.data;
   } catch (error) {
     console.error(error.response);
     return error;
   }
 }
+
+export const signin = async(data) => {
+  try {
+    console.log(data)
+    const res = await axios.post(
+      `${baseURL}/app/member/sign-in`,
+      {
+        email: data.email,
+        password: data.password,
+      }
+    );
+    console.log(res.data)
+    return res.data;
+  } catch (error){
+    console.error(error.response);
+    return error;
+  }
+} 
 const instanceUtil = axios.create({
   baseURL,
   headers: {

@@ -15,7 +15,7 @@ function SocialSignin () {
       try{
         console.log(authorizationCode)
         const res = await socialSignin(authorizationCode);
-        if (res.status === 200) {
+        if (res.code === 200) {
           dispatch(logIn(res.data.result));
           navigate("/");
           alert("로그인 성공");

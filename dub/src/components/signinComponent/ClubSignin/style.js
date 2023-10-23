@@ -13,7 +13,14 @@ export const TitleLogo = styled.img`
   color:${(props) => props.theme.base.black};
   margin-top: 61px;
 `
-
+export const SigninForm = styled.form`
+`
+export const InputDIV = styled.div`
+`
+export const InputLabel = styled.label`
+`
+export const InputSpace = styled.input`
+`
 export const ClubSigninButton = styled.div`
   width: 183px;
   height: 45px;
