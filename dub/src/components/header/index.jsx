@@ -26,10 +26,10 @@ function Header() {
     <S.HeadWrapper>
       <S.NavWrapper>
         <S.NavUl>
-          <S.LogoWrapper onclick={gotoMain}>
+          <S.LogoWrapper onClick={gotoMain}>
             <S.DUBLogo src={dub_logo} alt="" />
           </S.LogoWrapper>
-          <S.NavTale onclick={gotoSignin} >
+          <S.NavTale onClick={gotoSignin} >
             로그인
           </S.NavTale>
         </S.NavUl>

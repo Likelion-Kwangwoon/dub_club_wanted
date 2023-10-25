@@ -27,13 +27,16 @@ function ClubSignin () {
       console.error(error);
     }
   }
+  const gotoSignup = () => {
+    navigate("/signin/clubSignup");
+  }
   return(
     <S.ClubSigninWrapper>
       <S.TitleLogo src={dubLogo} alt="" />
-      <S.SigninForm onSubmit={handleSubmit(onSubmit)}>
+      <S.SigninForm onSubmit={handleSubmit(onSubmit)} id='signin'>
         <S.InputDIV>
-          <S.InputLabel>
-            아이디
+          <S.InputLabel htmlFor='email'>
+            <span>동아리 이메일</span>
           </S.InputLabel>
           <S.InputSpace
           id="email"
@@ -41,7 +44,7 @@ function ClubSignin () {
           {...register('email')}/>
         </S.InputDIV>
         <S.InputDIV>
-          <S.InputLabel>
+          <S.InputLabel htmlFor='password'>
               <span>비밀번호</span>
           </S.InputLabel>
           <S.InputSpace
@@ -50,11 +53,11 @@ function ClubSignin () {
           placeholder="비밀번호를 입력하세요." 
           {...register('password')}/>
         </S.InputDIV>
-        <S.ClubSigninButton type="submit">
+      </S.SigninForm>
+      <S.ClubSigninButton type="submit" id='signin' onClick={handleSubmit(onSubmit)}>
           <p>동아리 로그인</p>
         </S.ClubSigninButton>
-      </S.SigninForm>
-      <S.ClubSigninButton >
+      <S.ClubSigninButton onClick={gotoSignup}>
         <p>동아리 회원가입</p>
       </S.ClubSigninButton>
     </S.ClubSigninWrapper>
