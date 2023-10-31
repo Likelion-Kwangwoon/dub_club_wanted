@@ -1,20 +1,36 @@
 import styled from 'styled-components';
 
-export const ClubSigninWrapper = styled.div`
+export const ClubSignupWrapper = styled.div`
   display: flex;
   flex-direction: column; 
   align-items: center; 
   justify-content: center;  
+  position: relative;
 `
-export const TitleLogo = styled.img`
-  width: 77px;
-  height: 54px;
-  flex-shrink: 0;
+export const HeadDiv = styled.div`
+  width: 100%;
+  height: 40px;
+  top: 0px;
+  position: absolute;
+`
+export const CancelBtn = styled.p`
+  text-align: center;
+  display: inline-block; 
+  position: absolute;
+  left: 30px;
+  font-weight: 600;
+  transform: translateY(100%);
+`
+export const TitleText = styled.p`
+  font-size: 16px;
+  font-weight: 600;
   color:${(props) => props.theme.base.black};
-  margin-top: 61px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 100%);
 `
-export const SigninForm = styled.form`
-  margin: 100px 0 130px 0;
+export const SignupForm = styled.form`
+  margin: 50px 0 30px 0;
   
 `
 export const InputDIV = styled.div`
@@ -49,8 +65,8 @@ export const InputSpace = styled.input`
     line-height: normal;
   }
 `
-export const ClubSigninButton = styled.div`
-  width: 183px;
+export const ClubSignupButton = styled.div`
+  width: 358px;
   height: 45px;
   border-radius: 8px;
   background: ${(props) => props.theme.base.brown};
